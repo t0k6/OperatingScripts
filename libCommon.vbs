@@ -21,7 +21,7 @@ Private Function GetEnvironments()
     Dim objEnv
     Set objEnv = CreateObject("Scripting.Dictionary")
     
-    Dim objShell, objNetwork, obj
+    Dim objShell, objNetwork
     Set objShell = WScript.CreateObject("WScript.Shell")
     Set objNetwork = WScript.CreateObject("WScript.Network")
     
@@ -39,5 +39,37 @@ Private Function GetEnvironments()
     objEnv.Add "ScriptName",        WScript.ScriptName
     objEnv.Add "Version",           WScript.Version
     
-    Set GetEnvironments = objEnv
+    Set GetEnvironments = objEnv    
 End Function
+
+
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' 配列に要素を追加する。
+' Inputs:
+'   arr     対象の配列
+'   elm     追加する要素
+Sub PushArray(byRef arr, byRef elm)
+    Dim i, tmp
+    i = 0
+    If IsArray(arr) Then
+        ' 「Dim hoge()」で定義された配列はUbound()で即エラーのため
+        ' 要素を走査して存在すれば要素数を１つ増やす仕様
+        For Each tmp In arr
+            i = 1
+            Exit For
+        Next
+        If i=1 Then
+            Redim Preserve arr(Ubound(arr)+1)
+        Else
+            Redim arr(0)    ' 要素が無ければ要素数１の配列に定義しなおす
+        End If
+    Else
+        arr = Array(0)
+    End If
+    
+    If IsObject(elm) Then
+        Set arr(Ubound(arr)) = elm
+    Else
+        arr(Ubound(arr)) = elm
+    End If
+End Sub
