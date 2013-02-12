@@ -38,67 +38,67 @@ Class ManageShortcut
     
     ''''''''''''''''''''''''''''''
     ' ショートカットファイルのパス
-    Public Property Let filepath(path)
+    Public Property Let FilePath(path)
         Set objShortcut = Nothing
         Set objShortcut = objShell.CreateShortcut(path)
     End Property
-    Public Property Get filepath()
-        filepath = objShortcut.FullName
+    Public Property Get FilePath()
+        FilePath = objShortcut.FullName
     End Property
     Public Function SetPath(path)
-        Me.filepath = path
+        Me.FilePath = path
         Set SetPath = objShortcut
     End Function
     
     ''''''''''''''''''''''''''''''
     ' それ以外のショートカットオブジェクトプロパティ
-    Public Property Let targetpath(arg)
-        objShortcut.TargetPath = arg
+    Public Property Let TargetPath(str)
+        objShortcut.TargetPath = str
     End Property
-    Public Property Get targetpath()
-        targetpath = objShortcut.TargetPath
+    Public Property Get TargetPath()
+        TargetPath = objShortcut.TargetPath
     End Property
-    Public Property Let workdir(arg)
-        objShortcut.WorkingDirectory = arg
+    Public Property Let WorkDir(str)
+        objShortcut.WorkingDirectory = str
     End Property
-    Public Property Get workdir()
-        targetpath = objShortcut.WorkingDirectory
+    Public Property Get WorkDir()
+        WorkDir = objShortcut.WorkingDirectory
     End Property
-    Public Property Let hotkey(arg)
-        objShortcut.Hotkey = arg
+    Public Property Let Hotkey(str)
+        objShortcut.Hotkey = str
     End Property
-    Public Property Get hotkey()
-        targetpath = objShortcut.Hotkey
+    Public Property Get Hotkey()
+        Hotkey = objShortcut.Hotkey
     End Property
-    Public Property Let windowstyle(arg)
-        objShortcut.WindowStyle = arg
+    Public Property Let WindowStyle(str)
+        objShortcut.WindowStyle = str
     End Property
-    Public Property Get windowstyle()
-        targetpath = objShortcut.WindowStyle
+    Public Property Get WindowStyle()
+        WindowStyle = objShortcut.WindowStyle
     End Property
-    Public Property Let description(arg)
-        objShortcut.Description = arg
+    Public Property Let Description(str)
+        objShortcut.Description = str
     End Property
-    Public Property Get description()
-        targetpath = objShortcut.Description
+    Public Property Get Description()
+        Description = objShortcut.Description
     End Property
-    Public Property Let icon(arg)
-        objShortcut.IconLocation = arg
+    Public Property Let Icon(str)
+        objShortcut.IconLocation = str
     End Property
-    Public Property Get icon()
-        targetpath = objShortcut.IconLocation
+    Public Property Get Icon()
+        Icon = objShortcut.IconLocation
     End Property
-    Public Property Let args(arg)
-        objShortcut.Arguments = arg
+    Public Property Let Args(str)
+        objShortcut.Arguments = str
     End Property
-    Public Property Get args()
-        targetpath = objShortcut.Arguments
+    Public Property Get Args()
+        Args = objShortcut.Arguments
     End Property
     
     ''''''''''''''''''''''''''''''
     ' ショートカットファイルの存在
-    Public Property Get exists()
-        exists = objFSO.FileExists(strFilePath)
+    Public Property Get Exists()
+        Exists = objFSO.FileExists(strFilePath)
     End Property
     
     ''''''''''''''''''''''''''''''
